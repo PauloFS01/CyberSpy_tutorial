@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     public CharacterController myController;
     public Transform myCameraHead;
 
+    public GameObject bullet;
+    public Transform firePosition;
+
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
     void Start()
@@ -20,8 +23,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-
         CameraMovement();
+        Shoot();
+    }
+
+    public void Shoot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, firePosition.position, firePosition.rotation);
+        }
     }
 
     private void CameraMovement()
