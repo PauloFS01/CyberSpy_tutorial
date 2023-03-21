@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public float speed = 12.5f;
 
     public CharacterController myController;
+    public Transform myCameraHead;
+
+    public float mouseSensitivity= 100f;
+    private float cameraVerticalRotation;
     void Start()
     {
         
@@ -16,6 +20,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+
+        CameraMovement();
+    }
+
+    private void CameraMovement()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        cameraVerticalRotation -= mouseY;
+        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
+
+        transform.Rotate(Vector3.up * mouseX);
+        myCameraHead.localRotation = Quaternion.Euler(cameraVerticalRotation, 0f, 0f);
     }
 
     private void PlayerMovement()
