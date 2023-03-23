@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public Transform firePosition;
 
+    public GameObject muzzeFlash, bulletHole;
+
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
     void Start()
@@ -31,6 +33,20 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit;
+            if (Physics.Raycast(myCameraHead.position, myCameraHead.forward, out hit, 100f))
+            {
+                if(Vector3.Distance(myCameraHead.position, hit.point) > 2f)
+                {
+                    firePosition.LookAt(hit.point);
+                }
+            }
+            else
+            {
+                firePosition.LookAt(myCameraHead.position + (myCameraHead.forward * 50f));
+            }
+
+            Instantiate(muzzeFlash, firePosition.position, firePosition.rotation, firePosition);
             Instantiate(bullet, firePosition.position, firePosition.rotation);
         }
     }
