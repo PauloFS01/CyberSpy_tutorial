@@ -1,38 +1,34 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletController : MonoBehaviour
 {
-    public float speed, bulletLife;
-    private float timer = 0.0f;
 
-    public Rigidbody myRigidbody;
+    public float speed, bulletLife;
+    public Rigidbody myRigidBody;
+    private float timer = 0.0f;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        BulletFlying();
+        BulletFly();
 
-        //bulletLife -=  Time.deltaTime;
         timer += Time.deltaTime;
 
         if (2 < timer)
         {
             Destroy(gameObject);
-            print(timer);
 
         }
     }
 
-    private void BulletFlying()
+    private void BulletFly()
     {
-        myRigidbody.velocity = transform.forward * speed;
+        myRigidBody.velocity = transform.forward * speed;
     }
 
     private void OnTriggerEnter(Collider other)

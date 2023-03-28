@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public Transform firePosition;
 
-    public GameObject muzzeFlash, bulletHole;
+    public GameObject muzzeFlash, bulletHole, goopHole;
 
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
@@ -39,6 +39,12 @@ public class Player : MonoBehaviour
                 if(Vector3.Distance(myCameraHead.position, hit.point) > 2f)
                 {
                     firePosition.LookAt(hit.point);
+
+                    if(hit.collider.tag == "Shootable")
+                        Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
+
+                    if (hit.collider.tag == "GoopLeaker")
+                        Instantiate(goopHole, hit.point, Quaternion.LookRotation(hit.normal));
                 }
             }
             else
