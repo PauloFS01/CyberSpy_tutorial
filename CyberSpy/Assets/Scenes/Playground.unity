@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 165481501}
   - component: {fileID: 165481500}
   - component: {fileID: 165481499}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube obstalce bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 250249471}
   - component: {fileID: 250249470}
   - component: {fileID: 250249469}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 265828035}
   - component: {fileID: 265828034}
   - component: {fileID: 265828033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube obstalce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 722107220}
   - component: {fileID: 722107219}
   - component: {fileID: 722107218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 855425532}
   - component: {fileID: 855425531}
   - component: {fileID: 855425530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube diagonal 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,6 +1212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  velocity: {x: 0, y: 0, z: 0}
+  gravityModifier: 20
+  jumpHeight: 50
+  ground: {fileID: 1375494888}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  GroundDistance: 0.5
   myController: {fileID: 879029145}
   myCameraHead: {fileID: 395867025}
   bullet: {fileID: 4533294092088399524, guid: dc2b997e578b987448a22c448cc907b3, type: 3}
@@ -1252,6 +1260,7 @@ Transform:
   m_Children:
   - {fileID: 395867025}
   - {fileID: 1354738944}
+  - {fileID: 1375494888}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1767,7 +1776,7 @@ GameObject:
   - component: {fileID: 1204706728}
   - component: {fileID: 1204706727}
   - component: {fileID: 1204706726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1949,7 +1958,7 @@ GameObject:
   - component: {fileID: 1370806182}
   - component: {fileID: 1370806181}
   - component: {fileID: 1370806180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube diagonal 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2034,6 +2043,37 @@ Transform:
   m_Father: {fileID: 1997168369}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -50.947, y: 25.659, z: -41.276}
+--- !u!1 &1375494887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375494888}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1375494888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375494887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.319, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879029146}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390447047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2117,7 @@ GameObject:
   - component: {fileID: 1535104866}
   - component: {fileID: 1535104865}
   - component: {fileID: 1535104864}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube obstalce 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2271,7 +2311,7 @@ GameObject:
   - component: {fileID: 1646660311}
   - component: {fileID: 1646660310}
   - component: {fileID: 1646660309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube diagonal 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2368,7 +2408,7 @@ GameObject:
   - component: {fileID: 1874259151}
   - component: {fileID: 1874259150}
   - component: {fileID: 1874259149}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube building
   m_TagString: GoopLeaker
   m_Icon: {fileID: 0}
@@ -2508,7 +2548,7 @@ GameObject:
   - component: {fileID: 2116277685}
   - component: {fileID: 2116277684}
   - component: {fileID: 2116277683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube diagonal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

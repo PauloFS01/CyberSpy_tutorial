@@ -5,6 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 12.5f;
+    public Vector3 velocity;
+    public float gravityModifier;
+    public float jumpHeight;
+    private bool readyToJump;
+    public Transform ground;
+    public LayerMask groundLayer;
+    public float GroundDistance = 0.5f;
 
     public CharacterController myController;
     public Transform myCameraHead;
@@ -16,17 +23,26 @@ public class Player : MonoBehaviour
 
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement();
         CameraMovement();
+        Jump();
         Shoot();
+    }
+
+    public void Jump()
+    {
+        readyToJump = Physics.OverlapSphere(ground.position, GroundDistance, groundLayer).Length > 0;
+
+        if (Input.GetButtonDown("Jump") && readyToJump)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y) * Time.deltaTime;
+        }
+
+        myController.Move(velocity);
     }
 
     public void Shoot()
@@ -80,5 +96,12 @@ public class Player : MonoBehaviour
         movement = movement * speed * Time.deltaTime;
 
         myController.Move(movement);
+
+        velocity.y += Physics.gravity.y * Mathf.Pow(Time.deltaTime, 2) * gravityModifier;
+
+        myController.Move(velocity);
+
+        if (myController.isGrounded)
+            velocity.y = Physics.gravity.y * Time.deltaTime;
     }
 }
