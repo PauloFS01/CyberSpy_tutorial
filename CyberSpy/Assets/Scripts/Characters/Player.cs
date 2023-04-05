@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,15 +25,55 @@ public class Player : MonoBehaviour
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
 
-    // Update is called once per frame
+    private Vector3 crounchScale = new Vector3(1, 0.5f, 1);
+    private Vector3 bodyScale;
+    public Transform myBody;
+    private float initialControllerHeight;
+    public float crounchSpeed = 6f;
+    public bool isCrounching = false;
+
+    private void Start()
+    {
+        bodyScale = myBody.localScale;
+        initialControllerHeight = myController.height;
+
+    }
     void Update()
     {
         PlayerMovement();
         CameraMovement();
         Jump();
         Shoot();
+        Crounching();
     }
 
+    private void Crounching()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+            StartCrouching();
+
+        if (Input.GetKeyUp(KeyCode.C))
+            StopCouching();
+    }
+
+
+
+    private void StartCrouching()
+    {
+        myBody.localScale = crounchScale;
+        myCameraHead.position -= new Vector3(0, 0.7f, 0);
+
+        myController.height /= 2;
+        isCrounching = true;
+    }
+    private void StopCouching()
+    {
+        myBody.localScale = bodyScale;
+        myCameraHead.position += new Vector3(0, 0.7f, 0);
+
+        myController.height = initialControllerHeight;
+        isCrounching = false;
+    }
     public void Jump()
     {
         readyToJump = Physics.OverlapSphere(ground.position, GroundDistance, groundLayer).Length > 0;
@@ -93,7 +134,16 @@ public class Player : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 movement = x * transform.right + z * transform.forward;
-        movement = movement * speed * Time.deltaTime;
+
+        if (isCrounching)
+        {
+            movement = movement * crounchSpeed * Time.deltaTime;
+        } 
+        else
+        {
+            movement = movement * speed * Time.deltaTime;
+
+        }
 
         myController.Move(movement);
 

@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165481498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.35, y: 1.09, z: 19.37}
+  m_LocalPosition: {x: -21.35, y: 1.73, z: 19.37}
   m_LocalScale: {x: 4.7360697, y: 0.45122418, z: 0.22115135}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 526761709}
   - component: {fileID: 526761711}
   - component: {fileID: 526761710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,6 +1228,9 @@ MonoBehaviour:
   bulletHole: {fileID: 1892351807075712, guid: f5bb9f11e7abfef44b4451150dc5c16c, type: 3}
   goopHole: {fileID: 1000010675638318, guid: e280260f9165be040afbdbed236b768e, type: 3}
   mouseSensitivity: 700
+  myBody: {fileID: 1354738944}
+  crounchSpeed: 6
+  isCrounching: 0
 --- !u!143 &879029145
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1254,7 +1257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879029143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.51, z: 0}
+  m_LocalPosition: {x: 0, y: 1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1322,7 +1325,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1660,7 +1663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147603202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.173188, y: -1.6103015, z: 3.748579}
+  m_LocalPosition: {x: -5.173188, y: -2.5, z: 3.748579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
