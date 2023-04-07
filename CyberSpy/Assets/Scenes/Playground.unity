@@ -1212,7 +1212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3b61aaede6075409475fe989a16743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 12
+  runSpeed: 25
   velocity: {x: 0, y: 0, z: 0}
   gravityModifier: 20
   jumpHeight: 50
@@ -1222,6 +1223,11 @@ MonoBehaviour:
     m_Bits: 64
   GroundDistance: 0.5
   myAnimator: {fileID: 879029147}
+  isRunning: 0
+  startSlideTimer: 0
+  currentSliderTimer: 0
+  maxSlideTime: 2
+  slideSpeed: 30
   myController: {fileID: 879029145}
   myCameraHead: {fileID: 395867025}
   bullet: {fileID: 4533294092088399524, guid: dc2b997e578b987448a22c448cc907b3, type: 3}
@@ -1231,7 +1237,7 @@ MonoBehaviour:
   goopHole: {fileID: 1000010675638318, guid: e280260f9165be040afbdbed236b768e, type: 3}
   mouseSensitivity: 700
   myBody: {fileID: 1354738944}
-  crounchSpeed: 6
+  crounchSpeed: 5
   isCrounching: 0
 --- !u!143 &879029145
 CharacterController:
