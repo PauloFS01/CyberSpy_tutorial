@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Transform ground;
     public LayerMask groundLayer;
     public float GroundDistance = 0.5f;
+    public Animator myAnimator;
 
     public CharacterController myController;
     public Transform myCameraHead;
@@ -144,6 +145,9 @@ public class Player : MonoBehaviour
             movement = movement * speed * Time.deltaTime;
 
         }
+
+        myAnimator.SetFloat("PlayerSpeed", movement.magnitude);
+        //Debug.Log(movement.magnitude);
 
         myController.Move(movement);
 

@@ -1192,6 +1192,7 @@ GameObject:
   - component: {fileID: 879029146}
   - component: {fileID: 879029145}
   - component: {fileID: 879029144}
+  - component: {fileID: 879029147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1220,6 +1221,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   GroundDistance: 0.5
+  myAnimator: {fileID: 879029147}
   myController: {fileID: 879029145}
   myCameraHead: {fileID: 395867025}
   bullet: {fileID: 4533294092088399524, guid: dc2b997e578b987448a22c448cc907b3, type: 3}
@@ -1267,6 +1269,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &879029147
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879029143}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 70a63f6275a821545997978d359e3d36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
