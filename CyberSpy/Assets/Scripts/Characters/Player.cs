@@ -22,11 +22,6 @@ public class Player : MonoBehaviour
     public CharacterController myController;
     public Transform myCameraHead;
 
-    public GameObject bullet;
-    public Transform firePosition;
-
-    public GameObject muzzeFlash, bulletHole, goopHole;
-
     public float mouseSensitivity= 100f;
     private float cameraVerticalRotation;
 
@@ -47,8 +42,7 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         CameraMovement();
-        Jump();
-        Shoot();
+        Jump();;
         Crounching();
         SlideCounter();
     }
@@ -100,36 +94,6 @@ public class Player : MonoBehaviour
         }
 
         myController.Move(velocity);
-    }
-
-    public void Shoot()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(myCameraHead.position, myCameraHead.forward, out hit, 100f))
-            {
-                if(Vector3.Distance(myCameraHead.position, hit.point) > 2f)
-                {
-                    firePosition.LookAt(hit.point);
-
-                    if(hit.collider.tag == "Shootable")
-                        Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
-
-                    if (hit.collider.tag == "GoopLeaker")
-                        Instantiate(goopHole, hit.point, Quaternion.LookRotation(hit.normal));
-                }
-                if (hit.collider.CompareTag("Enemy"))
-                    Destroy(hit.collider.gameObject);
-            }
-            else
-            {
-                firePosition.LookAt(myCameraHead.position + (myCameraHead.forward * 50f));
-            }
-
-            Instantiate(muzzeFlash, firePosition.position, firePosition.rotation, firePosition);
-            Instantiate(bullet, firePosition.position, firePosition.rotation);
-        }
     }
 
     private void CameraMovement()
