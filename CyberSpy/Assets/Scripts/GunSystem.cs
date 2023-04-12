@@ -9,6 +9,11 @@ public class GunSystem : MonoBehaviour
 
     public GameObject muzzeFlash, bulletHole, goopHole;
     public GameObject bullet;
+
+    public bool canAutoFire;
+    private bool shooting, readyToShoot = true;
+    public float timeBetweenShots;
+
     void Start()
     {
         
@@ -21,8 +26,19 @@ public class GunSystem : MonoBehaviour
     }
     public void Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (canAutoFire)
         {
+            shooting = Input.GetMouseButton(0);
+        }
+        else
+        {
+            shooting = Input.GetMouseButtonDown(0);
+        }
+
+
+        if (shooting && readyToShoot)
+        {
+            readyToShoot = false;
             RaycastHit hit;
             if (Physics.Raycast(myCameraHead.position, myCameraHead.forward, out hit, 100f))
             {
@@ -46,6 +62,14 @@ public class GunSystem : MonoBehaviour
 
             Instantiate(muzzeFlash, firePosition.position, firePosition.rotation, firePosition);
             Instantiate(bullet, firePosition.position, firePosition.rotation, firePosition);
+
+            StartCoroutine(ResetShot());
         }
+    }
+
+    IEnumerator ResetShot()
+    {
+        yield return new WaitForSeconds(timeBetweenShots);
+        readyToShoot = true;
     }
 }
