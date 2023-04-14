@@ -1136,7 +1136,8 @@ MonoBehaviour:
   goopHole: {fileID: 1000010675638318, guid: e280260f9165be040afbdbed236b768e, type: 3}
   bullet: {fileID: 7024304710278248397, guid: d603941bb6bff9249968855d5a12df5b, type: 3}
   canAutoFire: 0
-  timeBetweenShots: 3
+  timeBetweenShots: 1
+  bulletsAvaiable: 3
 --- !u!1 &855425529
 GameObject:
   m_ObjectHideFlags: 0
