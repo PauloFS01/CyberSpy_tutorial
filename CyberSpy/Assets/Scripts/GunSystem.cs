@@ -8,6 +8,8 @@ public class GunSystem : MonoBehaviour
     public Transform myCameraHead;
     public Transform firePosition;
 
+    private UICanvasController myUICanvas;
+
     public GameObject muzzeFlash, bulletHole, goopHole;
     public GameObject bullet;
 
@@ -24,6 +26,8 @@ public class GunSystem : MonoBehaviour
     {
         totalBullets -= magazineSize;
         bulletsAvaiable = magazineSize;
+
+        myUICanvas = FindObjectOfType<UICanvasController>();
         
     }
 
@@ -32,6 +36,7 @@ public class GunSystem : MonoBehaviour
     {
         Shoot();
         GunManger();
+        UpdateAmmoText();
     }
 
     private void GunManger()
@@ -105,6 +110,12 @@ public class GunSystem : MonoBehaviour
         }
         reloading = true;
         StartCoroutine(ReloadTime());
+    }
+
+    private void UpdateAmmoText()
+    {
+        myUICanvas.ammoText.SetText(bulletsAvaiable + "/" + magazineSize);
+        myUICanvas.totalAmmoText.SetText("Total:" + totalBullets);
     }
 
     IEnumerator ResetShot()
