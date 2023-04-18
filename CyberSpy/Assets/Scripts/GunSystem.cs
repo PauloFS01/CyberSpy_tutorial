@@ -22,10 +22,18 @@ public class GunSystem : MonoBehaviour
     private bool reloading = false;
     public float reloadTime=3f;
 
+    // aiming
+    public Transform aimPosition;
+    private float aimSpeed=2f;
+
+    
+    private Vector3 gunStartPosition;
+
     void Start()
     {
         totalBullets -= magazineSize;
         bulletsAvaiable = magazineSize;
+        gunStartPosition = transform.localPosition; //local position is a refence to the parent position
 
         myUICanvas = FindObjectOfType<UICanvasController>();
         
@@ -42,10 +50,12 @@ public class GunSystem : MonoBehaviour
     private void GunManger()
     {
         if (Input.GetKeyDown(KeyCode.R) && bulletsAvaiable < magazineSize && !reloading)
-        {
-//            StartCoroutine(ReloadTime());
             Reload();
-        }
+
+        if (Input.GetMouseButton(1))
+            transform.position = Vector3.MoveTowards(transform.position, aimPosition.position, aimSpeed * Time.deltaTime);
+        else
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, gunStartPosition, aimSpeed * Time.deltaTime);
     }
 
     public void Shoot()
