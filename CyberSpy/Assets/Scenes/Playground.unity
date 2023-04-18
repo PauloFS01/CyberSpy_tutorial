@@ -1402,6 +1402,7 @@ MonoBehaviour:
   magazineSize: 10
   reloadTime: 1
   aimPosition: {fileID: 165025875}
+  zoomAmount: 55
 --- !u!1 &855425529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayerHead: {fileID: 395867025}
+  FOVSpeed: 0
 --- !u!1 &1046307011
 GameObject:
   m_ObjectHideFlags: 0
