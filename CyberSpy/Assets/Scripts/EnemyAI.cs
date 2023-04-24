@@ -21,8 +21,8 @@ public class EnemyAI : MonoBehaviour
     private bool playerInChaseRange;
 
     // attack behavior
-    public float attackRange;
-    private bool playerInAttackRange;
+    public float attackRange, attackTime;
+    private bool playerInAttackRange, readyToAttack = true;
     public GameObject attackProjectle;
 
     void Start()
@@ -59,7 +59,6 @@ public class EnemyAI : MonoBehaviour
         if (distanceToDestination.magnitude < 1f)
             destinationSet = false;
     }
-
     private void SearchForDestination()
     {
         float randomPositionZ = Random.Range(-destinationRange, destinationRange);
@@ -91,7 +90,22 @@ public class EnemyAI : MonoBehaviour
     {
         myAgent.SetDestination(transform.position);
         transform.LookAt(player);
-        Instantiate(attackProjectle, transform.position, Quaternion.identity);
+
+        if (readyToAttack)
+        {
+            Instantiate(attackProjectle, transform.position, transform.localRotation);
+
+            readyToAttack = false;
+            StartCoroutine(ResetAttack());
+
+        }
     } 
+
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitForSeconds(attackTime);
+
+        readyToAttack = true;
+    }
 }
   
