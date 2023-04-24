@@ -1626,6 +1626,7 @@ MonoBehaviour:
   attackRange: 4.56
   attackTime: 1
   attackProjectle: {fileID: 8299785199706515699, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+  meleeAtacker: 0
 --- !u!195 &920514734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2090,6 +2091,7 @@ MonoBehaviour:
   attackRange: 8.2
   attackTime: 3
   attackProjectle: {fileID: 0}
+  meleeAtacker: 1
 --- !u!64 &1172335463
 MeshCollider:
   m_ObjectHideFlags: 0
