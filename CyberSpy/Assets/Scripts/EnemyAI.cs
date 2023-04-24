@@ -8,24 +8,46 @@ using Random = UnityEngine.Random;
 public class EnemyAI : MonoBehaviour
 {
     NavMeshAgent myAgent;
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround, whatIsPlayer;
+    public Transform player;
 
+    //garding behavior
     public Vector3 destinationPoint;
     bool destinationSet;
     public float destinationRange;
 
+    // chasing behavior
+    public float chaseRange;
+    private bool playerInChaseRange;
+
+    // attack behavior
+    public float attackRange;
+    private bool playerInAttackRange;
+    public GameObject attackProjectle;
+
     void Start()
     {
+        player = FindObjectOfType<Player>().transform;
         myAgent = GetComponent<NavMeshAgent>();
     }
 
     
     void Update()
     {
-        Garding();
+        playerInChaseRange = Physics.CheckSphere(transform.position, chaseRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+        if (!playerInChaseRange && !playerInAttackRange) Guarding();
+
+        if (playerInChaseRange && !playerInAttackRange) ChasingPlayer();
+
+        if (playerInChaseRange && playerInAttackRange) AttackingPlayer();
+
     }
 
-    private void Garding()
+
+
+    private void Guarding()
     {
         if (!destinationSet)
             SearchForDestination();
@@ -52,4 +74,24 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(destinationPoint, -transform.up, 2f, whatIsGround))
             destinationSet = true;
     }
+ private void ChasingPlayer()
+    {
+        myAgent.SetDestination(player.position);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+    private void AttackingPlayer()
+    {
+        myAgent.SetDestination(transform.position);
+        transform.LookAt(player);
+        Instantiate(attackProjectle, transform.position, Quaternion.identity);
+    } 
 }
+  

@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 165025875}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: aim position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 395867025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1324,7 +1324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834152945}
   - component: {fileID: 834152946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 879029145}
   - component: {fileID: 879029144}
   - component: {fileID: 879029147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1616,8 +1616,15 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  player: {fileID: 0}
   destinationPoint: {x: 0, y: 0, z: 0}
   destinationRange: 100
+  chaseRange: 5.73
+  attackRange: 0
+  attackProjectle: {fileID: 8299785199706515699, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
 --- !u!195 &920514734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1777,7 +1784,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2239,7 +2246,7 @@ GameObject:
   - component: {fileID: 1354738944}
   - component: {fileID: 1354738943}
   - component: {fileID: 1354738942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2418,7 +2425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375494888}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2449,7 +2456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1390447048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2657,7 +2664,7 @@ GameObject:
   - component: {fileID: 1556188361}
   - component: {fileID: 1556188360}
   - component: {fileID: 1556188359}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2949,7 +2956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791250275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Guns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3235,6 +3242,63 @@ Transform:
   m_Father: {fileID: 1997168369}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -50.947, y: 25.659, z: -41.276}
+--- !u!1001 &8299785198721468511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515698, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299785199706515699, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
+      propertyPath: m_Name
+      value: Granade
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 519e256aece86f84d8883eb0401871c1, type: 3}
 --- !u!4 &8358755879482923640
 Transform:
   m_ObjectHideFlags: 0
@@ -3328,7 +3392,7 @@ GameObject:
   - component: {fileID: 8359070145051675426}
   - component: {fileID: 8391972785837342690}
   - component: {fileID: 8384063050216708952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3346,7 +3410,7 @@ GameObject:
   - component: {fileID: 8367321543815349724}
   - component: {fileID: 8393485771208050088}
   - component: {fileID: 8384071233430366272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3364,7 +3428,7 @@ GameObject:
   - component: {fileID: 8358848964517967870}
   - component: {fileID: 8391963069904780386}
   - component: {fileID: 8385618778557746442}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3382,7 +3446,7 @@ GameObject:
   - component: {fileID: 8358755879482923640}
   - component: {fileID: 8392688807883165582}
   - component: {fileID: 8385017889458223254}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3400,7 +3464,7 @@ GameObject:
   - component: {fileID: 8359015876485365896}
   - component: {fileID: 8392061601914712744}
   - component: {fileID: 8384244442493732300}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,7 +3480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8358803559081338336}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3434,7 +3498,7 @@ GameObject:
   - component: {fileID: 8367355448512461164}
   - component: {fileID: 8391983429320617984}
   - component: {fileID: 8384634984227100616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3452,7 +3516,7 @@ GameObject:
   - component: {fileID: 8367562428672205634}
   - component: {fileID: 8393520047336805372}
   - component: {fileID: 8384106413087960058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
