@@ -12,6 +12,8 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     private Animator myAnimator;
 
+    public Transform firePosition;
+
     //garding behavior
     public Vector3 destinationPoint;
     bool destinationSet;
@@ -54,6 +56,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Guarding()
     {
+
         if (!destinationSet)
             SearchForDestination();
         else
@@ -98,7 +101,11 @@ public class EnemyAI : MonoBehaviour
 
         if (readyToAttack && !meleeAtacker)
         {
-            Instantiate(attackProjectle, transform.position, transform.localRotation);
+            myAnimator.SetTrigger("Attack");
+
+            firePosition.LookAt(player);
+
+            Instantiate(attackProjectle, firePosition.position, firePosition.rotation);
 
             readyToAttack = false;
             StartCoroutine(ResetAttack());
