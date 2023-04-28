@@ -10,7 +10,7 @@ public class GunSystem : MonoBehaviour
 
     private UICanvasController myUICanvas;
 
-    public GameObject muzzeFlash, bulletHole, goopHole;
+    public GameObject muzzeFlash, bulletHole, goopHole, bloodEffect;
     public GameObject bullet;
 
     public bool canAutoFire;
@@ -27,6 +27,8 @@ public class GunSystem : MonoBehaviour
     private float aimSpeed=2f;
     private Vector3 gunStartPosition;
     public float zoomAmount;
+
+    public int damageAmount;
 
     void Start()
     {
@@ -91,7 +93,10 @@ public class GunSystem : MonoBehaviour
                         Instantiate(goopHole, hit.point, Quaternion.LookRotation(hit.normal));
                 }
                 if (hit.collider.CompareTag("Enemy"))
-                    Destroy(hit.collider.gameObject);
+                {
+                    hit.collider.GetComponent<EnemyHealthSystem>().TakeDamage(damageAmount);
+                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                }
             }
             else
             {
