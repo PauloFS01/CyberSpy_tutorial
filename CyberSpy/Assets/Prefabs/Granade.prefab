@@ -44,7 +44,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8299785199706515699}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upForce: 8
   forwadForce: 32
+  damageAmount: 1
 --- !u!1 &8299785200448338239
 GameObject:
   m_ObjectHideFlags: 0
