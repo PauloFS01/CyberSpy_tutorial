@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerhealthSystem : MonoBehaviour
 {
-    public int maxHealth, currentHealth;
+    public int maxHealth;
+    public int currentHealth;
+
     UICanvasController healthbar;
 
     void Start()
