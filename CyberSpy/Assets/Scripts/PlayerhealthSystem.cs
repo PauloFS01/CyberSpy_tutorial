@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerhealthSystem : MonoBehaviour
 {
-    public int currentHealth = 5;
+    public int maxHealth, currentHealth;
+    UICanvasController healthbar;
+
     void Start()
     {
-
+        currentHealth = maxHealth;
+        healthbar = FindObjectOfType<UICanvasController>();
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -19,6 +23,8 @@ public class PlayerhealthSystem : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+
+        healthbar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
