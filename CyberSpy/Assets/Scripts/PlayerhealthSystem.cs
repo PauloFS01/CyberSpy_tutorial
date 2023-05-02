@@ -30,7 +30,7 @@ public class PlayerhealthSystem : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
-            //print("ok you hit me");
+            FindObjectOfType<GameManager>().PlayerRespawn();
         }
     }
 }
