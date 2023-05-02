@@ -8,6 +8,9 @@ public class BulletController : MonoBehaviour
     public float speed, bulletLife;
     public Rigidbody myRigidBody;
     private float timer = 0.0f;
+
+    public ParticleSystem explosion;
+    public bool isARocket;
     void Start()
     {
         
@@ -33,6 +36,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isARocket)
+            Instantiate(explosion, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

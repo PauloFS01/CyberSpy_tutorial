@@ -32,6 +32,8 @@ public class GunSystem : MonoBehaviour
 
     public string gunName;
 
+    public bool isARocketLauch;
+
     void Start()
     {
         totalBullets -= magazineSize;
@@ -87,14 +89,17 @@ public class GunSystem : MonoBehaviour
                 if (Vector3.Distance(myCameraHead.position, hit.point) > 2f)
                 {
                     firePosition.LookAt(hit.point);
-
+                    if (!isARocketLauch)
+                    {
                     if (hit.collider.tag == "Shootable")
                         Instantiate(bulletHole, hit.point, Quaternion.LookRotation(hit.normal));
 
                     if (hit.collider.tag == "GoopLeaker")
                         Instantiate(goopHole, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+
                 }
-                if (hit.collider.CompareTag("Enemy"))
+                if (hit.collider.CompareTag("Enemy") && !isARocketLauch)
                 {
                     hit.collider.GetComponent<EnemyHealthSystem>().TakeDamage(damageAmount);
                     Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -107,8 +112,17 @@ public class GunSystem : MonoBehaviour
 
             bulletsAvaiable--;
 
-            Instantiate(muzzeFlash, firePosition.position, firePosition.rotation, firePosition);
-            Instantiate(bullet, firePosition.position, firePosition.rotation, firePosition);
+            if (!isARocketLauch)
+            {
+                Instantiate(muzzeFlash, firePosition.position, firePosition.rotation, firePosition);
+                Instantiate(bullet, firePosition.position, firePosition.rotation, firePosition);
+            }
+            else
+            {
+                Instantiate(bullet, firePosition.position, firePosition.rotation);
+            }
+
+
 
             StartCoroutine(ResetShot());
 
