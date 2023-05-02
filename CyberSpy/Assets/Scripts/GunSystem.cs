@@ -30,6 +30,8 @@ public class GunSystem : MonoBehaviour
 
     public int damageAmount;
 
+    public string gunName;
+
     void Start()
     {
         totalBullets -= magazineSize;
