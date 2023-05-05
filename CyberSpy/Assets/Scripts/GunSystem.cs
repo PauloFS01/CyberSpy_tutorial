@@ -8,6 +8,8 @@ public class GunSystem : MonoBehaviour
     public Transform myCameraHead;
     public Transform firePosition;
 
+    public Animator myAnimator;
+
     private UICanvasController myUICanvas;
 
     public GameObject muzzeFlash, bulletHole, goopHole, bloodEffect;
@@ -131,18 +133,9 @@ public class GunSystem : MonoBehaviour
 
     public void Reload()
     {
-        int bulletsToAdd = magazineSize - bulletsAvaiable;
 
-        if(totalBullets > bulletsToAdd)
-        {
-            totalBullets -= bulletsToAdd;
-            bulletsAvaiable = magazineSize;
-        }
-        else
-        {
-            bulletsAvaiable += totalBullets;
-            totalBullets = 0;
-        }
+        if(gunName == "Pistol") myAnimator.SetTrigger("PistolReload");
+
         reloading = true;
         StartCoroutine(ReloadTime());
     }
@@ -162,6 +155,19 @@ public class GunSystem : MonoBehaviour
     IEnumerator ReloadTime()
     {
         yield return new WaitForSeconds(reloadTime);
+
+        int bulletsToAdd = magazineSize - bulletsAvaiable;
+
+        if (totalBullets > bulletsToAdd)
+        {
+            totalBullets -= bulletsToAdd;
+            bulletsAvaiable = magazineSize;
+        }
+        else
+        {
+            bulletsAvaiable += totalBullets;
+            totalBullets = 0;
+        }
         reloading = false;
     }
 }
