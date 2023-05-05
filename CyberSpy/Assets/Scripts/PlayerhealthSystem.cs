@@ -19,7 +19,7 @@ public class PlayerhealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damageAmount)
@@ -32,5 +32,9 @@ public class PlayerhealthSystem : MonoBehaviour
             gameObject.SetActive(false);
             FindObjectOfType<GameManager>().PlayerRespawn();
         }
+    }
+    public void HealPlayer(int amountOfHelth)
+    {
+        currentHealth += amountOfHelth;
     }
 }

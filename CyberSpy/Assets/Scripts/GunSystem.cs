@@ -36,6 +36,8 @@ public class GunSystem : MonoBehaviour
 
     public bool isARocketLauch;
 
+    public int pickUpBulletAmmount;
+
     void Start()
     {
         totalBullets -= magazineSize;
@@ -144,6 +146,11 @@ public class GunSystem : MonoBehaviour
     {
         myUICanvas.ammoText.SetText(bulletsAvaiable + "/" + magazineSize);
         myUICanvas.totalAmmoText.SetText("Total:" + totalBullets);
+    }
+
+    public void AddAmmonition()
+    {
+        totalBullets += pickUpBulletAmmount;
     }
 
     IEnumerator ResetShot()
