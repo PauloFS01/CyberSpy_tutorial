@@ -10,6 +10,7 @@ public class WeaponsPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlayerSFX(6);
             other.gameObject.GetComponentInChildren<WeaponsSwitSystem>().AddGun(gunPickupName);
             gameObject.SetActive(false);
         }

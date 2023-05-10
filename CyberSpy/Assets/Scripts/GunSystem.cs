@@ -138,6 +138,8 @@ public class GunSystem : MonoBehaviour
 
         if(gunName == "Pistol") myAnimator.SetTrigger("PistolReload");
 
+        AudioManager.instance.PlayerSFX(7);
+
         reloading = true;
         StartCoroutine(ReloadTime());
     }

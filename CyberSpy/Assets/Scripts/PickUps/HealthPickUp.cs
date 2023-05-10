@@ -10,6 +10,7 @@ public class HealthPickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.instance.PlayerSFX(1);
             other.GetComponent<PlayerhealthSystem>().HealPlayer(amountOfHealing);
             Destroy(gameObject);
         }
