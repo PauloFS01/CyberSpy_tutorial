@@ -912,7 +912,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backGroundMusic: {fileID: 1561544478}
-  SFXs: []
+  SFXs:
+  - {fileID: 1962156363}
+  - {fileID: 1924456937}
+  - {fileID: 1205688012}
+  - {fileID: 647906641}
+  - {fileID: 234952930}
+  - {fileID: 998362039}
+  - {fileID: 139279861}
+  - {fileID: 1919638422}
 --- !u!1 &331701983
 GameObject:
   m_ObjectHideFlags: 0
